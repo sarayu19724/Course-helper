@@ -4,19 +4,27 @@ import {useState} from "react";
 import React from "react";
 import { TextField,Grid } from "@material-ui/core";
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import Form from "./form";
+import MyCard from './card';
+import DialogForm from "./form";
 
 export default function Home() {
   const [Login,setLogin] = useState(false);
-  const[open,setOpen] = useState(false);
-  const[box,setBox] =  useState(false);
+  
+  const [open, setOpen] = React.useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const [values, setValues] = useState({ 
     name: '', 
     Code: '', 
@@ -25,6 +33,15 @@ export default function Home() {
     Imageurl: '',
   }); 
   const handleChange = (e) => { const { name, value } = e.target; setValues({ ...values, [name]: value, }); };
+  
+    const cards = [ 
+      { 
+        name: 'Machine Learning', Description: 'An advanced course on machine learning algorithms',Code:'Code:CS711', Credits:'Credits:9',image: 'https://www.hfsresearch.com/wp-content/uploads/2019/09/5b5f1a8e048a3267059501.png' }, 
+      {name: 'Data Structures and algorithms', Description: 'Learn about arrays,linked lists and more',Code:'Code:ESO207',Credits:'Credits:11', image: 'https://www.seedprogramming.org/wp-content/uploads/2023/02/PicsArt_03-24-07.25.58-1.webp' }, 
+      { name: 'Fluid Mechanics', Description: 'Fundamentals of fluid mechanics and applications',Code:'Code:ME302',Credits:'Credits:9', image: 'https://edurev.gumlet.io/AllImages/original/ApplicationImages/CourseImages/dfb3dc65-ad56-4554-a184-b151ef2d70a4_CI.jpg' }, 
+      {name: 'Introduction to electronics', Description: 'An introductory course of electric circuits & applications',Code:'Code:ESC201', credits:'Credits:14',image: 'https://th.bing.com/th/id/OIP.d8WM4VWYPHKx09WEcAD3eAHaE7?rs=1&pid=ImgDetMain'}];
+
+
 
     return (
     <>
@@ -75,183 +92,22 @@ export default function Home() {
      } 
     </div>  
       <div >
-         
-        <div className="course1" style={{width:'400px',height:'250px', border:'1px solid black',marginLeft:'20px',marginTop:'10px'}} onClick={()=> setBox(true)}>
-            <div className="course11" style={{width:'400px',height:'125px', border:'1px solid black',backgroundImage:'url(https://cdn5.slideserve.com/10665168/machine-learning-n.jpg)'}} >
+      <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+         {cards.map((card, index) => ( 
+          <MyCard
+           key={index} name={card.name} Description={card.Description} image={card.image} Code={card.Code} Credits={card.Credits} /> 
            
-            </div>
-            <div className="course12" >
-            <h1 style={{fontSize:'15px',textAlign:'center'}}>Machine Learning </h1>
-            <h2 style={{fontSize:'15px',textAlign:'center'}}>CS771</h2>
-            <h3 style={{fontSize:'15px',textAlign:'center'}}>Credits:9</h3>
-            <h4 style={{fontSize:'15px',textAlign:'center'}}>An advanced course on machine learning</h4>
-            </div>
+           ))} 
 
-         </div>
-         {
-          box&&
-          
-          <div className="form1" style={{width:'800px',border:'1px solid black',marginLeft:'200px',padding:'20px',marginTop:'-100px'}}>
-            <form style={{zIndex:'1000'}}>
-                   <button  onClick={()=> setBox(false)} style={{marginLeft:'760px',width:'20px',background:'none',border:'none',fontSize:'20px'}}>x</button>
-                   <h1 style={{paddingBottom:'10px',marginLeft:'20px'}}>Add Course</h1>
-           
-                   <Grid container spacing={4}>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Full Name*" 
-                            variant="outlined"
-                             fullWidth name="name" 
-                             value={values.name} 
-                             onChange={handleChange} />
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Course Code*" 
-                            variant="outlined"
-                             fullWidth 
-                             name="code" 
-                             value={values.Code} 
-                             onChange={handleChange} 
-                             type="number& text"/>
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="credits*" 
-                            variant="outlined"
-                             fullWidth 
-                             name="credits" 
-                             value={values.Credits} 
-                             onChange={handleChange}
-                             type="number" />
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Description" 
-                            variant="outlined"
-                             fullWidth 
-                             name="Description" 
-                             value={values.Description} 
-                             onChange={handleChange} 
-                             type="text"/>
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Image Url" 
-                            variant="outlined"
-                             fullWidth 
-                             name="Image url" 
-                             value={values.Imageurl} 
-                             onChange={handleChange} 
-                             type="url"/>
-                        </Grid>
-           
-                   </Grid>
-                   <button type="submit" style={{width:'70px',height:'30px',backgroundColor:'#1569C7',marginLeft:'350px',marginTop:'20px',color:'white'}}>submit</button>
-                   </form>
-                </div>
-      
-         }
-        <div className="course1" style={{width:'400px',height:'250px', border:'1px solid black',marginLeft:'500px',marginTop:'-250px',overflow:'hidden'}}>
-           <div className="course21" style={{width:'400px',height:'125px', border:'1px solid black',backgroundImage:'url(https://static.yueya.net/shuomingshu.cn//wp-content/uploads/images/2022/11/30/144ca4324c7e4e74aab8fbe2d30ea1ae_1mfg1g4k2yp.png)'}} >
-             
-           </div>
-           <div className="course22" >
-           <h1 style={{fontSize:'15px',textAlign:'center'}}>Introduction to Electronics </h1>
-           <h2 style={{fontSize:'15px',textAlign:'center'}}>Code: ESO201</h2>
-           <h3 style={{fontSize:'15px',textAlign:'center'}}>Credits:11</h3>
-           <h4 style={{fontSize:'15px',textAlign:'center'}}>An introductory course of electrical circuits</h4>
-           </div>
-
-        </div>
+      </div>
         
-        <div className="course1" style={{width:'400px',height:'250px', border:'1px solid black',marginLeft:'1000px',marginTop:'-250px'}}>
-           <div className="course21" style={{width:'400px',height:'125px', border:'1px solid black',backgroundImage:'url(https://th.bing.com/th/id/OIP.Udy1pUNY-W-V2cGwvG9OXgAAAA?rs=1&pid=ImgDetMain)'}} >
-           
-           </div>
-           <div className="course22" >
-           <h1 style={{fontSize:'15px',textAlign:'center'}}>Fluid Mechanics </h1>
-           <h2 style={{fontSize:'15px',textAlign:'center'}}>code:ME302</h2>
-           <h3 style={{fontSize:'15px',textAlign:'center'}}>Credits:9</h3>
-           <h4 style={{fontSize:'15px',textAlign:'center'}}>Fundamentals of fluid mechanics and applications</h4>
-           </div>
-
-        </div>
-        <div className="course1" style={{width:'400px',height:'250px', border:'1px solid black',marginTop:'20px',marginLeft:'20px'}}>
-           <div className="course21" style={{width:'400px',height:'125px', border:'1px solid black',backgroundImage: 'url(https://i.pinimg.com/originals/cc/6a/4c/cc6a4c8465a0d2d77ddf8a6ef93e1f3c.png)'}} >
-           
-           </div>
-           <div className="course22" >
-           <h1 style={{fontSize:'15px',textAlign:'center'}}>Data Structures </h1>
-           <h2 style={{fontSize:'15px',textAlign:'center'}}>Code:ESO207</h2>
-           <h3 style={{fontSize:'15px',textAlign:'center'}}>Credits:11</h3>
-           <h4 style={{fontSize:'15px',textAlign:'center'}}>Learn about arrays,linked lists,trees and more</h4>
-           </div>
-
-        </div>
-        <button onClick={()=> setOpen(true)} style={{marginLeft:'1400px',width:'80px',height:'40px',marginTop:'20px'}}>Add Course</button>
-         {
-            open&&
-            <form  className={styles.form1}>
-            <div className="form1" style={{width:'800px',border:'1px solid black',marginLeft:'200px',marginTop:'-300px',padding:'10px'}}>
-                   <button  onClick={()=> setOpen(false)} style={{marginLeft:'760px',width:'20px',background:'none',border:'none',fontSize:'20px'}}>x</button>
-                   <h1 style={{paddingBottom:'10px',marginLeft:'20px'}}>Add Course</h1>
-           
-                   <Grid container spacing={4}>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Full Name*" 
-                            variant="outlined"
-                             fullWidth name="name" 
-                             value={values.name} 
-                             onChange={handleChange} />
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Course Code*" 
-                            variant="outlined"
-                             fullWidth 
-                             name="Code" 
-                             value={values.Code} 
-                             onChange={handleChange} 
-                             type="number& text"/>
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Credits*" 
-                            variant="outlined"
-                             fullWidth 
-                             name="Credits" 
-                             value={values.Credits} 
-                             onChange={handleChange}
-                             type="number" />
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Description" 
-                            variant="outlined"
-                             fullWidth 
-                             name="Description" 
-                             value={values.Description} 
-                             onChange={handleChange} 
-                             type="text"/>
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextField 
-                            label="Image Url" 
-                            variant="outlined"
-                             fullWidth 
-                             name="Imageurl" 
-                             value={values.Imageurl} 
-                             onChange={handleChange} 
-                             type="url"/>
-                        </Grid>
-           
-                   </Grid>
-                   <button type="submit" style={{width:'70px',height:'30px',backgroundColor:'#1569C7',marginLeft:'350px',marginTop:'20px',color:'white'}}>submit</button>
-                </div>
-                </form>
-        } 
+        <React.Fragment>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Add Course
+      </Button>
+      <DialogForm open={open} handleClose={handleClose} values={values}/>
+        
+    </React.Fragment>
       </div>
 
     </>
