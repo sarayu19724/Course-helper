@@ -9,7 +9,8 @@ import { TextField,Grid } from "@material-ui/core";
 export default function Home() {
   const [Login,setLogin] = useState(false);
   const[open,setOpen] = useState(false);
-  
+  const[box,setBox] =  useState(false);
+
   const [values, setValues] = useState({ 
     name: '', 
     Code: '', 
@@ -69,7 +70,7 @@ export default function Home() {
     </div>  
       <div >
          
-        <div className="course1" style={{width:'400px',height:'250px', border:'1px solid black',marginLeft:'20px',marginTop:'10px'}}>
+        <div className="course1" style={{width:'400px',height:'250px', border:'1px solid black',marginLeft:'20px',marginTop:'10px'}} onClick={()=> setBox(true)}>
             <div className="course11" style={{width:'400px',height:'125px', border:'1px solid black',backgroundImage:'url(https://cdn5.slideserve.com/10665168/machine-learning-n.jpg)'}} >
            
             </div>
@@ -81,7 +82,71 @@ export default function Home() {
             </div>
 
          </div>
-        <div className="course1" style={{width:'400px',height:'250px', border:'1px solid black',marginLeft:'500px',marginTop:'-250px'}}>
+         {
+          box&&
+          
+          <div className="form1" style={{width:'800px',border:'1px solid black',marginLeft:'200px',padding:'20px',marginTop:'-100px'}}>
+            <form style={{zIndex:'1000'}}>
+                   <button  onClick={()=> setBox(false)} style={{marginLeft:'760px',width:'20px',background:'none',border:'none',fontSize:'20px'}}>x</button>
+                   <h1 style={{paddingBottom:'10px',marginLeft:'20px'}}>Add Course</h1>
+           
+                   <Grid container spacing={4}>
+                        <Grid item xs={12} >
+                            <TextField 
+                            label="Full Name*" 
+                            variant="outlined"
+                             fullWidth name="name" 
+                             value={values.name} 
+                             onChange={handleChange} />
+                        </Grid>
+                        <Grid item xs={12} >
+                            <TextField 
+                            label="Course Code*" 
+                            variant="outlined"
+                             fullWidth 
+                             name="code" 
+                             value={values.Code} 
+                             onChange={handleChange} 
+                             type="number& text"/>
+                        </Grid>
+                        <Grid item xs={12} >
+                            <TextField 
+                            label="credits*" 
+                            variant="outlined"
+                             fullWidth 
+                             name="credits" 
+                             value={values.Credits} 
+                             onChange={handleChange}
+                             type="number" />
+                        </Grid>
+                        <Grid item xs={12} >
+                            <TextField 
+                            label="Description" 
+                            variant="outlined"
+                             fullWidth 
+                             name="Description" 
+                             value={values.Description} 
+                             onChange={handleChange} 
+                             type="text"/>
+                        </Grid>
+                        <Grid item xs={12} >
+                            <TextField 
+                            label="Image Url" 
+                            variant="outlined"
+                             fullWidth 
+                             name="Image url" 
+                             value={values.Imageurl} 
+                             onChange={handleChange} 
+                             type="url"/>
+                        </Grid>
+           
+                   </Grid>
+                   <button type="submit" style={{width:'70px',height:'30px',backgroundColor:'#1569C7',marginLeft:'350px',marginTop:'20px',color:'white'}}>submit</button>
+                   </form>
+                </div>
+      
+         }
+        <div className="course1" style={{width:'400px',height:'250px', border:'1px solid black',marginLeft:'500px',marginTop:'-250px',overflow:'hidden'}}>
            <div className="course21" style={{width:'400px',height:'125px', border:'1px solid black',backgroundImage:'url(https://static.yueya.net/shuomingshu.cn//wp-content/uploads/images/2022/11/30/144ca4324c7e4e74aab8fbe2d30ea1ae_1mfg1g4k2yp.png)'}} >
              
            </div>
@@ -140,33 +205,40 @@ export default function Home() {
                             label="Course Code*" 
                             variant="outlined"
                              fullWidth 
-                             name="name" 
+                             name="Code" 
                              value={values.Code} 
-                             onChange={handleChange} />
+                             onChange={handleChange} 
+                             type="number& text"/>
                         </Grid>
                         <Grid item xs={12} >
                             <TextField 
-                            label="credits*" 
+                            label="Credits*" 
                             variant="outlined"
-                             fullWidth name="name" 
+                             fullWidth 
+                             name="Credits" 
                              value={values.Credits} 
-                             onChange={handleChange} />
+                             onChange={handleChange}
+                             type="number" />
                         </Grid>
                         <Grid item xs={12} >
                             <TextField 
                             label="Description" 
                             variant="outlined"
-                             fullWidth name="name" 
+                             fullWidth 
+                             name="Description" 
                              value={values.Description} 
-                             onChange={handleChange} />
+                             onChange={handleChange} 
+                             type="text"/>
                         </Grid>
                         <Grid item xs={12} >
                             <TextField 
                             label="Image Url" 
                             variant="outlined"
-                             fullWidth name="name" 
+                             fullWidth 
+                             name="Imageurl" 
                              value={values.Imageurl} 
-                             onChange={handleChange} />
+                             onChange={handleChange} 
+                             type="url"/>
                         </Grid>
            
                    </Grid>
