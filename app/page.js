@@ -3,7 +3,13 @@ import styles from "./page.module.css";
 import {useState} from "react";
 import React from "react";
 import { TextField,Grid } from "@material-ui/core";
-
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 
 export default function Home() {
@@ -186,8 +192,8 @@ export default function Home() {
         <button onClick={()=> setOpen(true)} style={{marginLeft:'1400px',width:'80px',height:'40px',marginTop:'20px'}}>Add Course</button>
          {
             open&&
-        
-            <div className="form1" style={{width:'800px',border:'1px solid black',marginLeft:'200px',padding:'10px'}}>
+            <form  className={styles.form1}>
+            <div className="form1" style={{width:'800px',border:'1px solid black',marginLeft:'200px',marginTop:'-300px',padding:'10px'}}>
                    <button  onClick={()=> setOpen(false)} style={{marginLeft:'760px',width:'20px',background:'none',border:'none',fontSize:'20px'}}>x</button>
                    <h1 style={{paddingBottom:'10px',marginLeft:'20px'}}>Add Course</h1>
            
@@ -244,6 +250,7 @@ export default function Home() {
                    </Grid>
                    <button type="submit" style={{width:'70px',height:'30px',backgroundColor:'#1569C7',marginLeft:'350px',marginTop:'20px',color:'white'}}>submit</button>
                 </div>
+                </form>
         } 
       </div>
 
