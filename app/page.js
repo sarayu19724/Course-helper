@@ -2,14 +2,7 @@
 import styles from "./page.module.css";
 import {useState} from "react";
 import React from "react";
-import { TextField,Grid } from "@material-ui/core";
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Form from "./form";
 import MyCard from './card';
 import DialogForm from "./form";
 
@@ -25,6 +18,7 @@ export default function Home() {
   const handleClose = () => {
     setOpen(false);
   };
+  
   const [values, setValues] = useState({ 
     name: '', 
     Code: '', 
@@ -95,9 +89,11 @@ export default function Home() {
       <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
          {cards.map((card, index) => ( 
           <MyCard
-           key={index} name={card.name} Description={card.Description} image={card.image} Code={card.Code} Credits={card.Credits} /> 
+           key={index} name={card.name} Description={card.Description} image={card.image} Code={card.Code} Credits={card.Credits}  /> 
            
            ))} 
+           
+
 
       </div>
         
