@@ -2,6 +2,7 @@
 import styles from "./page.module.css";
 import {useState} from "react";
 import React from "react";
+
 import MyCard from './card';
 import DialogForm from "./form";
 import AppBar from '@mui/material/AppBar';
@@ -9,12 +10,10 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { BrowserRouter, BrowserRouter as  Route ,Router,Routes} from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
+
 
 export default function Home() {
-  
   const [Login,setLogin] = useState(false);
   
   const [open, setOpen] = React.useState(false);
@@ -42,9 +41,8 @@ export default function Home() {
       {Name: 'Data Structures and algorithms', Description: 'Learn about arrays,linked lists and more',Code:'Code:ESO207',Credits:'Credits:11', image: 'https://www.seedprogramming.org/wp-content/uploads/2023/02/PicsArt_03-24-07.25.58-1.webp' }, 
       { Name: 'Fluid Mechanics', Description: 'Fundamentals of fluid mechanics and applications',Code:'Code:ME302',Credits:'Credits:9', image: 'https://edurev.gumlet.io/AllImages/original/ApplicationImages/CourseImages/dfb3dc65-ad56-4554-a184-b151ef2d70a4_CI.jpg' }, 
       {Name: 'Introduction to electronics', Description: 'An introductory course of electric circuits & applications',Code:'Code:ESC201', credits:'Credits:14',image: 'https://th.bing.com/th/id/OIP.d8WM4VWYPHKx09WEcAD3eAHaE7?rs=1&pid=ImgDetMain'}];
-      
-      
-       
+
+
 
     return (
     <>
@@ -55,12 +53,7 @@ export default function Home() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Course Helper
           </Typography>
-          
-           <Button>
-             Login
-            </Button>
-            
-          
+          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
