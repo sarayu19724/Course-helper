@@ -13,7 +13,7 @@ import { BrowserRouter, BrowserRouter as  Route ,Router,Routes} from 'react-rout
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const navigate = useNavigate();
+  
   const [Login,setLogin] = useState(false);
   
   const [open, setOpen] = React.useState(false);
@@ -54,7 +54,11 @@ export default function Home() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Course Helper
           </Typography>
-          <button onClick={()=> navigate("/login")}>login</button>
+          
+           <Button>
+             Login
+            </Button>
+            
           
         </Toolbar>
       </AppBar>
