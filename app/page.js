@@ -11,7 +11,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-
+import Login from "./login";
 
 export default function Home() {
   const [Login,setLogin] = useState(false);
@@ -53,7 +53,10 @@ export default function Home() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Course Helper
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">
+           Login
+            
+            </Button>
         </Toolbar>
       </AppBar>
     </Box>
