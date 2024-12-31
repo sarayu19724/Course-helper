@@ -7,7 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Button } from "@mui/material";
 import { useRouter } from 'next/navigation';
-import Login from "./login";
+
 
 
 export default function Nav(){
@@ -25,7 +25,7 @@ export default function Nav(){
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Course Helper
             </Typography>
-            <Link color="inherit" href="/"   >
+            <Link color="inherit" href="/login"   >
             <p>Login</p>
                </Link>
           </Toolbar>
