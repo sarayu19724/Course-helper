@@ -67,12 +67,12 @@ const MyCard = ({ index, Name, Description,Code,Credits, image }) => {
           </CardContent>
         </CardActionArea>
       </Card>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} >
       <DialogTitle>Add Course</DialogTitle>
       <DialogContent>
         
-        <form onSubmit={handleSubmit}>
-        <Grid container spacing={3}>
+        <form onSubmit={handleSubmit} style={{marginTop:'10px'}}>
+        <Grid container spacing={4}>
                         <Grid item xs={12} >
                             <TextField 
                             label="Full Name*" 
