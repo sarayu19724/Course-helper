@@ -25,7 +25,7 @@ export default function Nav(){
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Course Helper
             </Typography>
-            <Link color="inherit" href="/login"   >
+            <Link color="inherit" href="/login">
             <p>Login</p>
                </Link>
           </Toolbar>
